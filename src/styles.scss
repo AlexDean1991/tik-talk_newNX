@@ -21,6 +21,8 @@ body {
   background: var(--dark-color);
   color: var(--light-color);
   background-image: url(/assets/imgs/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .skill-tag {
