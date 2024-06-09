@@ -34,8 +34,7 @@ export class ChatsService {
             user: chat.userFirst.id === message.userFromId ? chat.userFirst : chat.userSecond,
             isMine: message.userFromId === this.me()!.id
           }
-        })//@ts-ignore
-.sort((m1, m2) => new Date(m1.createdAt) - new Date(m2.createdAt))
+        })
 
         this.activeChatMessages.set(patchedMessages)
 
