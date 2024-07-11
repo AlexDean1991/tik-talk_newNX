@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-import {ProfileService} from '@tt/profile';
+import {GlobalStoreService} from '@tt/shared';
 import { firstValueFrom } from 'rxjs';
 import {PostService} from '../../data';
 
@@ -27,7 +27,7 @@ export class PostInputComponent {
 
   isCommentInput = input(false);
   postId = input<number>(0);
-  profile = inject(ProfileService).me;
+  profile = inject(GlobalStoreService).me;
 
   @Output() created = new EventEmitter();
 
