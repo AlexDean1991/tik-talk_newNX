@@ -11,11 +11,10 @@ import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
 import {ProfileService} from '@tt/profile';
 
 @Component({
-  selector: 'app-message-input',
-  standalone: true,
-  imports: [AvatarCircleComponent, NgIf, FormsModule, SvgIconComponent],
-  templateUrl: './message-input.component.html',
-  styleUrl: './message-input.component.scss',
+    selector: 'app-message-input',
+    imports: [AvatarCircleComponent, NgIf, FormsModule, SvgIconComponent],
+    templateUrl: './message-input.component.html',
+    styleUrl: './message-input.component.scss'
 })
 export class MessageInputComponent {
   r2 = inject(Renderer2);

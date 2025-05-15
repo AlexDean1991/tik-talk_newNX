@@ -9,19 +9,18 @@ import {ProfileService} from '../../data';
 import {ProfileHeaderComponent} from '../../ui';
 
 @Component({
-  selector: 'app-profile-page',
-  standalone: true,
-  imports: [
-    ProfileHeaderComponent,
-    AsyncPipe,
-    SvgIconComponent,
-    RouterLink,
-    NgForOf,
-    ImgUrlPipe,
-    PostFeedComponent,
-  ],
-  templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.scss',
+    selector: 'app-profile-page',
+    imports: [
+        ProfileHeaderComponent,
+        AsyncPipe,
+        SvgIconComponent,
+        RouterLink,
+        NgForOf,
+        ImgUrlPipe,
+        PostFeedComponent,
+    ],
+    templateUrl: './profile-page.component.html',
+    styleUrl: './profile-page.component.scss'
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);

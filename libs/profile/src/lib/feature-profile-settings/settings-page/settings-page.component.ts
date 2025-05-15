@@ -5,11 +5,10 @@ import { firstValueFrom } from 'rxjs';
 import {AvatarUploadComponent, ProfileHeaderComponent} from '../../ui';
 
 @Component({
-  selector: 'app-settings-page',
-  standalone: true,
-  imports: [ProfileHeaderComponent, ReactiveFormsModule, AvatarUploadComponent],
-  templateUrl: './settings-page.component.html',
-  styleUrl: './settings-page.component.scss',
+    selector: 'app-settings-page',
+    imports: [ProfileHeaderComponent, ReactiveFormsModule, AvatarUploadComponent],
+    templateUrl: './settings-page.component.html',
+    styleUrl: './settings-page.component.scss'
 })
 export class SettingsPageComponent {
   fb = inject(FormBuilder);

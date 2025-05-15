@@ -9,11 +9,10 @@ import {
 } from 'rxjs';
 
 @Component({
-  selector: 'app-profile-filters',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './profile-filters.component.html',
-  styleUrl: './profile-filters.component.scss',
+    selector: 'app-profile-filters',
+    imports: [ReactiveFormsModule],
+    templateUrl: './profile-filters.component.html',
+    styleUrl: './profile-filters.component.scss'
 })
 export class ProfileFiltersComponent implements OnDestroy {
   fb = inject(FormBuilder);

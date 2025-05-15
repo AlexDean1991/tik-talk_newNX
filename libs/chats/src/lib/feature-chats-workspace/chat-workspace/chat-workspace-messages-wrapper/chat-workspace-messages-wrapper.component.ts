@@ -5,11 +5,10 @@ import {MessageInputComponent} from '../../../ui';
 import {ChatWorkspaceMessageComponent} from './chat-workspace-message/chat-workspace-message.component';
 
 @Component({
-  selector: 'app-chat-workspace-messages-wrapper',
-  standalone: true,
-  imports: [ChatWorkspaceMessageComponent, MessageInputComponent],
-  templateUrl: './chat-workspace-messages-wrapper.component.html',
-  styleUrl: './chat-workspace-messages-wrapper.component.scss',
+    selector: 'app-chat-workspace-messages-wrapper',
+    imports: [ChatWorkspaceMessageComponent, MessageInputComponent],
+    templateUrl: './chat-workspace-messages-wrapper.component.html',
+    styleUrl: './chat-workspace-messages-wrapper.component.scss'
 })
 export class ChatWorkspaceMessagesWrapperComponent {
   chatsService = inject(ChatsService);

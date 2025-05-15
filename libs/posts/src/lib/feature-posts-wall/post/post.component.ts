@@ -6,17 +6,16 @@ import {Post, PostComment, PostService} from '../../data';
 import {CommentComponent, PostInputComponent} from '../../ui';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  imports: [
-    AvatarCircleComponent,
-    DatePipe,
-    SvgIconComponent,
-    PostInputComponent,
-    CommentComponent,
-  ],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.scss',
+    selector: 'app-post',
+    imports: [
+        AvatarCircleComponent,
+        DatePipe,
+        SvgIconComponent,
+        PostInputComponent,
+        CommentComponent,
+    ],
+    templateUrl: './post.component.html',
+    styleUrl: './post.component.scss'
 })
 export class PostComponent implements OnInit {
   post = input<Post>();

@@ -11,16 +11,15 @@ import {
 } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
 
 @Component({
-  selector: 'app-chat-workspace',
-  standalone: true,
-  imports: [
-    ChatWorkspaceHeaderComponent,
-    ChatWorkspaceMessagesWrapperComponent,
-    MessageInputComponent,
-    AsyncPipe,
-  ],
-  templateUrl: './chat-workspace.component.html',
-  styleUrl: './chat-workspace.component.scss',
+    selector: 'app-chat-workspace',
+    imports: [
+        ChatWorkspaceHeaderComponent,
+        ChatWorkspaceMessagesWrapperComponent,
+        MessageInputComponent,
+        AsyncPipe,
+    ],
+    templateUrl: './chat-workspace.component.html',
+    styleUrl: './chat-workspace.component.scss'
 })
 export class ChatWorkspaceComponent {
   route = inject(ActivatedRoute);

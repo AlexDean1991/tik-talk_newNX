@@ -7,20 +7,19 @@ import { firstValueFrom } from 'rxjs';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [
-    SvgIconComponent,
-    NgForOf,
-    SubscriberCardComponent,
-    AsyncPipe,
-    JsonPipe,
-    RouterLink,
-    ImgUrlPipe,
-    RouterLinkActive,
-  ],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss',
+    selector: 'app-sidebar',
+    imports: [
+        SvgIconComponent,
+        NgForOf,
+        SubscriberCardComponent,
+        AsyncPipe,
+        JsonPipe,
+        RouterLink,
+        ImgUrlPipe,
+        RouterLinkActive,
+    ],
+    templateUrl: './sidebar.component.html',
+    styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
   profileService = inject(ProfileService);

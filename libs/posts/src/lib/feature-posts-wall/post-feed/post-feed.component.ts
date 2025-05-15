@@ -11,11 +11,10 @@ import {PostInputComponent} from '../../ui';
 import { PostComponent } from '../post/post.component';
 
 @Component({
-  selector: 'app-post-feed',
-  standalone: true,
-  imports: [PostInputComponent, PostComponent],
-  templateUrl: './post-feed.component.html',
-  styleUrl: './post-feed.component.scss',
+    selector: 'app-post-feed',
+    imports: [PostInputComponent, PostComponent],
+    templateUrl: './post-feed.component.html',
+    styleUrl: './post-feed.component.scss'
 })
 export class PostFeedComponent {
   postService = inject(PostService);
