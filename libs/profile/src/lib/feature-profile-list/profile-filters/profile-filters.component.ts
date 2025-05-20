@@ -1,11 +1,10 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { profileActions, ProfileService } from '@tt/profile';
+import { profileActions, ProfileService, selectProfileFilters } from '@tt/profile';
 import {
   debounceTime,
   startWith,
-  Subscription,
-  switchMap,
+  Subscription, take
 } from 'rxjs';
 import { Store } from '@ngrx/store';
 
@@ -29,9 +28,22 @@ export class ProfileFiltersComponent implements OnDestroy {
   searchFormSub!: Subscription;
 
   constructor() {
+    // Перенесем подписку на форму в ngOnInit
+  }
+
+  ngOnInit() {
+    // Шаг 1: Восстановление сохраненных фильтров
+    this.store.select(selectProfileFilters)
+      .pipe(take(1)) // Берем только текущее значение
+      .subscribe(filters => {
+        if (filters) {
+          this.searchForm.patchValue(filters, { emitEvent: false }); // emitEvent: false чтобы не вызвать сабмит
+        }
+      });
+
+    // Шаг 2: Подписка на изменения формы
     this.searchFormSub = this.searchForm.valueChanges
       .pipe(
-        startWith({}),
         debounceTime(300),
       )
       .subscribe(formValue => {

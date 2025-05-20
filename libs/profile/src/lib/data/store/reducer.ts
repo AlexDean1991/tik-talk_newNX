@@ -1,7 +1,6 @@
 import { Profile } from '@tt/interfaces/profile';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { profileActions } from './actions';
-import { state } from '@angular/animations';
 
 export interface ProfileState {
   profiles: Profile[],
@@ -11,17 +10,21 @@ export interface ProfileState {
 export const initialState: ProfileState = {
   profiles: [],
   profileFilters: {}
-}
+};
 
 export const profileFeature = createFeature({
   name: 'profileFeature',
   reducer: createReducer(
     initialState,
-    on(profileActions.profilesLoaded, (state, payload)=> {
-      return {
-        ...state,
-        profiles: payload.profiles
-      }
-    })
+    on(profileActions.profilesLoaded, (state, { profiles }) => ({
+      ...state,
+      profiles: profiles
+    })),
+
+    // Добавляем новый обработчик для фильтров (это новое)
+    on(profileActions.filterEvents, (state, { filters }) => ({
+      ...state,
+      profileFilters: filters // Сохраняем фильтры в состояние
+    }))
   )
 })
