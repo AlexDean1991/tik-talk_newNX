@@ -13,23 +13,15 @@ import {
 })
 export class PostService {
   #http = inject(HttpClient);
-
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
 
-  posts = signal<Post[]>([]);
 
   createPost(payload: PostCreateDto) {
-    return this.#http.post<Post>(`${this.baseApiUrl}post/`, payload).pipe(
-      switchMap(() => {
-        return this.fetchPosts();
-      })
-    );
+    return this.#http.post<Post>(`${this.baseApiUrl}post/`, payload);
   }
 
   fetchPosts() {
-    return this.#http
-      .get<Post[]>(`${this.baseApiUrl}post/`)
-      .pipe(tap((res) => this.posts.set(res)));
+    return this.#http.get<Post[]>(`${this.baseApiUrl}post/`); // Убрали сигнал
   }
 
   createComment(payload: CommentCreateDto) {

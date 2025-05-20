@@ -11,8 +11,9 @@ import {
 import { FormsModule } from '@angular/forms';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
 import {GlobalStoreService} from '@tt/shared';
-import { firstValueFrom } from 'rxjs';
-import {PostService} from '../../data';
+import { Store } from '@ngrx/store';
+import { postsActions } from '../../data/store/actions';
+import { CommentCreateDto, PostCreateDto } from '../../data/interfaces/post.interface';
 
 @Component({
     selector: 'app-post-input',
@@ -22,7 +23,7 @@ import {PostService} from '../../data';
 })
 export class PostInputComponent {
   r2 = inject(Renderer2);
-  postService = inject(PostService);
+  store = inject(Store)
 
   isCommentInput = input(false);
   postId = input<number>(0);
@@ -44,31 +45,27 @@ export class PostInputComponent {
     this.r2.setStyle(textarea, 'height', textarea.scrollHeight + 'px');
   }
 
+
   onCreatePost() {
-    if (!this.postText) return;
+    if (!this.postText.trim()) return;
 
     if (this.isCommentInput()) {
-      firstValueFrom(
-        this.postService.createComment({
-          text: this.postText,
-          authorId: this.profile()!.id,
-          postId: this.postId(),
-        })
-      ).then(() => {
-        this.postText = '';
-        this.created.emit();
-      });
-      return;
-    }
-
-    firstValueFrom(
-      this.postService.createPost({
-        title: 'Клевый пост',
+      const dto: CommentCreateDto = {
+        text: this.postText,
+        authorId: this.profile()!.id,
+        postId: this.postId(),
+      };
+      this.store.dispatch(postsActions.createComment({ dto }));
+    } else {
+      const dto: PostCreateDto = {
+        title: 'Новый пост', // Добавьте поле для заголовка в шаблоне
         content: this.postText,
         authorId: this.profile()!.id,
-      })
-    ).then(() => {
-      this.postText = '';
-    });
+      };
+      this.store.dispatch(postsActions.createPost({ dto }));
+    }
+
+    this.postText = '';
+    this.created.emit();
   }
 }

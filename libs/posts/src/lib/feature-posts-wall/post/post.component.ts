@@ -19,9 +19,7 @@ import {CommentComponent, PostInputComponent} from '../../ui';
 })
 export class PostComponent implements OnInit {
   post = input<Post>();
-
   comments = signal<PostComment[]>([]);
-
   postService = inject(PostService);
 
   async ngOnInit() {

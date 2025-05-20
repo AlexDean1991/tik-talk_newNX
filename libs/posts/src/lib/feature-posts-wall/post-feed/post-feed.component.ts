@@ -6,30 +6,37 @@ import {
   Renderer2,
 } from '@angular/core';
 import { firstValueFrom, fromEvent } from 'rxjs';
-import {PostService} from '../../data';
-import {PostInputComponent} from '../../ui';
+import { Store } from '@ngrx/store';
+import { postsActions } from '../../data/store/actions';
+import { selectAllPosts, selectPostsLoading } from '../../data/store/selectors';
+import { AsyncPipe } from '@angular/common';
+import { PostInputComponent } from '../../ui/post-input/post-input.component';
 import { PostComponent } from '../post/post.component';
 
+
 @Component({
-    selector: 'app-post-feed',
-    imports: [PostInputComponent, PostComponent],
-    templateUrl: './post-feed.component.html',
-    styleUrl: './post-feed.component.scss'
+  selector: 'app-post-feed',
+  standalone: true, // Добавляем если используем standalone компоненты
+  imports: [PostInputComponent, PostComponent, AsyncPipe], // Добавляем импорты
+  templateUrl: './post-feed.component.html',
+  styleUrl: './post-feed.component.scss',
 })
 export class PostFeedComponent {
-  postService = inject(PostService);
+  store = inject(Store);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
 
-  feed = this.postService.posts;
+  posts$ = this.store.select(selectAllPosts);
+  loading$ = this.store.select(selectPostsLoading);
+
+  constructor() {
+    console.log('Dispatching loadPosts action');
+    this.store.dispatch(postsActions.loadPosts());
+  }
 
   @HostListener('window:resize')
   onWindowResize() {
     this.resizeFeed();
-  }
-
-  constructor() {
-    firstValueFrom(this.postService.fetchPosts());
   }
 
   ngAfterViewInit() {

@@ -4,6 +4,8 @@ import {ProfileCardComponent} from '../../ui';
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
 import {selectFilteresProfiles } from '../../data';
 import { Store } from '@ngrx/store';
+// import { Store } from '@ngxs/store';
+// import { ProfileState } from '../../data/store/state.ngxs';
 
 @Component({
     selector: 'app-search-page',
@@ -16,6 +18,7 @@ export class SearchPageComponent {
   store = inject(Store)
 
   profiles = this.store.selectSignal(selectFilteresProfiles);
+  // profiles = this.store.selectSignal(ProfileState.getProfiles)
 
   constructor() {}
 }
