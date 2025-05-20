@@ -26,10 +26,14 @@ export const postsFeature = createFeature({
       loading: true,
       error: null
     })),
+
+
     on(postsActions.loadPostsSuccess, (state, { posts }) => {
       console.log('Reducer: updating posts state'); // Логирование
       return { ...state, posts };
     }),
+
+
     on(postsActions.loadPostsFailure, (state, { error }) => ({
       ...state,
       error,

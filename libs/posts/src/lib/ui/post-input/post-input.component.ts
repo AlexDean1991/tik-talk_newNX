@@ -55,6 +55,7 @@ export class PostInputComponent {
         authorId: this.profile()!.id,
         postId: this.postId(),
       };
+
       this.store.dispatch(postsActions.createComment({ dto }));
     } else {
       const dto: PostCreateDto = {

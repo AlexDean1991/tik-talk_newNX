@@ -29,7 +29,7 @@ export class PostFeedComponent {
   posts$ = this.store.select(selectAllPosts);
   loading$ = this.store.select(selectPostsLoading);
 
-  constructor() {
+  ngOnInit() {
     console.log('Dispatching loadPosts action');
     this.store.dispatch(postsActions.loadPosts());
   }
