@@ -20,9 +20,13 @@
     <div class="skill-tag">{{ skill }}</div>
     }
   </div>
-
+    <div class="profile-btns-wrapper">
   <div class="profile-card__action-btns">
     <button class="btn">Подписаться</button>
   </div>
+      <button class="btn to-setting-btn" (click)="sendMessage(profile.id)">
+        Написать
+      </button>
+    </div>
 </div>
 }

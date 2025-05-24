@@ -51,7 +51,7 @@ export class PostsEffects {
       ofType(postsActions.createComment),
       tap(({ dto }) => console.log('[Effect] Create Comment Started:', dto)),
       mergeMap(({ dto }) =>
-        this.postService.createComment(dto).pipe(
+         this.postService.createComment(dto).pipe(
           tap((comment) => console.log('[Effect] Comment Created:', comment)),
           map((comment) => postsActions.createCommentSuccess({ comment })),
           catchError((error) => {

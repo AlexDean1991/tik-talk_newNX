@@ -10,6 +10,10 @@
       >
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
+        <span *ngIf="menuItem.label === 'Чаты' && (unreadCount$ | async)! > 0"
+              class="badge">
+        {{ unreadCount$ | async }}
+</span>
       </a>
     </li>
   </ul>

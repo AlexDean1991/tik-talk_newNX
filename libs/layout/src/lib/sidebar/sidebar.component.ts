@@ -1,14 +1,16 @@
-import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import { AsyncPipe, CommonModule, JsonPipe, NgForOf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {ProfileService} from '@tt/profile';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
+import { ChatsService } from '@tt/chats';
 
 @Component({
     selector: 'app-sidebar',
     imports: [
+        CommonModule,
         SvgIconComponent,
         NgForOf,
         SubscriberCardComponent,
@@ -24,8 +26,13 @@ import { SubscriberCardComponent } from './subscriber-card/subscriber-card.compo
 export class SidebarComponent {
   profileService = inject(ProfileService);
   subcribers$ = this.profileService.getSubscribersShortList();
+  unreadCount$: Observable<number>
 
   me = this.profileService.me;
+
+  constructor(private chatsService: ChatsService) {
+    this.unreadCount$ = this.chatsService.unreadCount$
+  }
 
   menuItems = [
     {
@@ -47,5 +54,7 @@ export class SidebarComponent {
 
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());
+
+    this.chatsService.connectWs().subscribe()
   }
 }

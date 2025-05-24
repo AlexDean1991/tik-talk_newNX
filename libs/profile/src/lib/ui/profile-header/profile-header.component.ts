@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
-import {AvatarCircleComponent, ImgUrlPipe} from '@tt/common-ui';
+import {AvatarCircleComponent} from '@tt/common-ui';
 import {Profile} from '@tt/interfaces/profile';
 
 @Component({
     selector: 'app-profile-header',
-    imports: [ImgUrlPipe, AvatarCircleComponent],
+    imports: [AvatarCircleComponent],
     templateUrl: './profile-header.component.html',
     styleUrl: './profile-header.component.scss'
 })
