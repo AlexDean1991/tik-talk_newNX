@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import {AvatarCircleComponent} from '@tt/common-ui';
-import { LastMessageRes } from '../../data';
+import { LastMessageRes } from '../../../../../data-access/src/lib/chats';
 
 @Component({
     selector: 'button[chats]',

@@ -50,12 +50,12 @@ import { ChatConnectionWsParams, ChatWsService } from './chat-ws-service.interfa
 import { WebSocketSubject } from 'rxjs/internal/observable/dom/WebSocketSubject';
 import { ChatWsMessage } from './chat-ws-message.interface';
 import { webSocket } from 'rxjs/webSocket';
-import { finalize, Observable, tap } from 'rxjs';
+import { catchError, finalize, Observable, tap, throwError } from 'rxjs';
 import { inject } from '@angular/core';
-import { AuthService } from '@tt/auth';
+import { AuthService } from '@tt/data-access';
+
 
 export class ChatWsRxjsService implements ChatWsService {
-  // Внедряем AuthService для работы с токенами
   #authService = inject(AuthService);
   #socket: WebSocketSubject<ChatWsMessage> | null = null;
   #currentParams: ChatConnectionWsParams | null = null;
@@ -90,11 +90,26 @@ export class ChatWsRxjsService implements ChatWsService {
 
   sendMessage(text: string, chatId: number): void {
     if (!this.#socket) {
-      console.error('Не подключен');
+      console.error('WebSocket не подключен');
       return;
     }
 
     this.#socket.next({ text, chat_id: chatId });
+
+    this.#socket.pipe(
+      catchError((error) => {
+        if (error.message?.includes('Invalid-token')) {
+          this.#authService.refreshAuthToken().subscribe({
+            next: () => {
+              this.reconnectWs();
+              this.#socket?.next({ text, chat_id: chatId }); // Повторяем отправку
+            },
+            error: (err) => console.error('Ошибка при обновлении токена:', err),
+          });
+        }
+        return throwError(error);
+      })
+    ).subscribe();
   }
 
   disconnect(): void {

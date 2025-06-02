@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, HostBinding, input } from '@angular/core';
-import {Message} from '../../../../data';
+import {Message} from '../../../../../../../data-access/src/lib/chats';
 import {AvatarCircleComponent} from '@tt/common-ui';
 
 @Component({

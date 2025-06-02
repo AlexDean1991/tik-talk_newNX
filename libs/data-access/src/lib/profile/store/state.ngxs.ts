@@ -4,7 +4,7 @@ import { inject, Inject, Injectable } from '@angular/core';
 import { FilterEvents } from './actions.ngxs';
 import { Observable, tap } from 'rxjs';
 import { ProfileService } from '@tt/profile';
-import { Pageble } from 'libs/shared/src/lib/data/interfaces/pageble.interface';
+import { Pageble } from '../../shared/interfaces/pageble.interface';
 
 export interface ProfileStateModel {
   profiles: Profile[],

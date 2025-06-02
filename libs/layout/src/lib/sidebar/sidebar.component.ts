@@ -15,7 +15,6 @@ import { ChatsService } from '@tt/chats';
         NgForOf,
         SubscriberCardComponent,
         AsyncPipe,
-        JsonPipe,
         RouterLink,
         ImgUrlPipe,
         RouterLinkActive,
@@ -54,7 +53,6 @@ export class SidebarComponent {
 
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());
-
     this.chatsService.connectWs().subscribe()
   }
 }

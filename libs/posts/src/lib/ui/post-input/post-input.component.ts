@@ -10,10 +10,11 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-import {GlobalStoreService} from '@tt/shared';
 import { Store } from '@ngrx/store';
-import { postsActions } from '../../data/store/actions';
+
 import { CommentCreateDto, PostCreateDto } from '../../data/interfaces/post.interface';
+import { postsActions } from '@tt/posts';
+import { GlobalStoreService } from '@tt/data-access';
 
 @Component({
     selector: 'app-post-input',
@@ -27,6 +28,7 @@ export class PostInputComponent {
 
   isCommentInput = input(false);
   postId = input<number>(0);
+  // @ts-ignore
   profile = inject(GlobalStoreService).me;
 
   @Output() created = new EventEmitter();

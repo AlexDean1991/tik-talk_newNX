@@ -9,7 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 // import { Store } from '@ngxs/store';
 
-import { profileActions, ProfileService, selectProfileFilters } from '../../data';
+import { profileActions, ProfileService, selectProfileFilters } from '../../../../../data-access/src/lib/profile';
 // import { FilterEvents } from '../../data/store/actions.ngxs';
 
 @Component({

@@ -1,8 +1,10 @@
 import {Component, inject, input} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
-import {Chat, ChatsService} from '../../../data';
-import {MessageInputComponent} from '../../../ui';
+
+
 import {ChatWorkspaceMessageComponent} from './chat-workspace-message/chat-workspace-message.component';
+import { Chat, ChatsService } from '@tt/data-access';
+import { MessageInputComponent } from '@tt/chats';
 
 @Component({
     selector: 'app-chat-workspace-messages-wrapper',

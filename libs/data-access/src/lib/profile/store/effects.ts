@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { profileActions } from './actions';
 import { map, switchMap } from 'rxjs';
 import { ProfileService } from '../services/profile.service';
-import { Pageble} from '@tt/shared';
 import { Profile } from '@tt/interfaces/profile';
+import { Pageble } from '../../shared';
 
 @Injectable({
   providedIn: 'root'

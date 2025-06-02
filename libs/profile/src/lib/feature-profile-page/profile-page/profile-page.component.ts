@@ -5,7 +5,7 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {PostFeedComponent} from '@tt/posts';
 import {switchMap} from 'rxjs';
-import {ProfileService} from '../../data';
+import {ProfileService} from '../../../../../data-access/src/lib/profile';
 import {ProfileHeaderComponent} from '../../ui';
 
 @Component({
@@ -15,7 +15,6 @@ import {ProfileHeaderComponent} from '../../ui';
         AsyncPipe,
         SvgIconComponent,
         RouterLink,
-        NgForOf,
         ImgUrlPipe,
         PostFeedComponent,
     ],

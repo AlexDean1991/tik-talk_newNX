@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import {ProfileService} from '@tt/profile';
+import {ProfileService} from 'libs/profile/src';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface';
 import { ChatWsService } from '../interfaces/chat-ws-service.interface';
-import { AuthService } from '@tt/auth';
 import { ChatWsMessage } from '../interfaces/chat-ws-message.interface';
 import { isNewMessage, isUnreadMessage } from '../interfaces/type-guards';
 import { ChatWsRxjsService } from '../interfaces/chat-ws-rxjs.service';
+import { AuthService } from '@tt/data-access';
 
 @Injectable({
   providedIn: 'root',

@@ -3,19 +3,17 @@ import {Component, inject} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProfileService} from '@tt/profile';
 import {filter, of, switchMap} from 'rxjs';
-import {ChatsService} from '../../data';
-import {MessageInputComponent} from '../../ui';
 import {ChatWorkspaceHeaderComponent} from './chat-workspace-header/chat-workspace-header.component';
 import {
   ChatWorkspaceMessagesWrapperComponent
 } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
+import { ChatsService } from '@tt/data-access';
 
 @Component({
     selector: 'app-chat-workspace',
     imports: [
         ChatWorkspaceHeaderComponent,
         ChatWorkspaceMessagesWrapperComponent,
-        MessageInputComponent,
         AsyncPipe,
     ],
     templateUrl: './chat-workspace.component.html',
