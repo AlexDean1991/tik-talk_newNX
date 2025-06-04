@@ -1,7 +1,7 @@
 
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import {ProfileCardComponent} from '../../ui';
-import { ProfileFiltersComponent, selectFilteredProfiles } from '@tt/profile';
+import { profileActions, ProfileFiltersComponent, selectFilteredProfiles } from '@tt/profile';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -14,9 +14,14 @@ import { Store } from '@ngrx/store';
 export class SearchPageComponent {
 
   store = inject(Store)
-
   profiles = this.store.selectSignal(selectFilteredProfiles);
-  // profiles = this.store.selectSignal(ProfileState.getProfiles)
 
   constructor() {}
+
+  ngOnInit() {
+    // Отправляем действие filterEvents с пустыми фильтрами для загрузки всех профилей
+    this.store.dispatch(profileActions.filterEvents({ filters: {} }));
+  }
 }
+
+  // profiles = this.store.selectSignal(ProfileState.getProfiles)
