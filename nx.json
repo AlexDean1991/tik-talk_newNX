@@ -62,7 +62,7 @@
       "style": "scss",
       "skipTests": true,
       "standalone": true,
-      "changeDetection": "onPush"
+      "changeDetection": "OnPush"
     }
   }
 }
