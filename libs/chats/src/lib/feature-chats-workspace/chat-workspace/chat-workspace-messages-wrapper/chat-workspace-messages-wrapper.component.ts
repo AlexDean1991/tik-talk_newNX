@@ -1,4 +1,4 @@
-import {Component, inject, input} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import {firstValueFrom} from 'rxjs';
 
 
@@ -10,7 +10,8 @@ import { MessageInputComponent } from '@tt/chats';
     selector: 'app-chat-workspace-messages-wrapper',
     imports: [ChatWorkspaceMessageComponent, MessageInputComponent],
     templateUrl: './chat-workspace-messages-wrapper.component.html',
-    styleUrl: './chat-workspace-messages-wrapper.component.scss'
+    styleUrl: './chat-workspace-messages-wrapper.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatWorkspaceMessagesWrapperComponent {
   chatsService = inject(ChatsService);

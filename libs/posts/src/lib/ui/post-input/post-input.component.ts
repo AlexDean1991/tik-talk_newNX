@@ -1,12 +1,13 @@
 import { NgIf } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   HostBinding,
   inject,
   input,
   Output,
-  Renderer2,
+  Renderer2
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
@@ -20,7 +21,8 @@ import { GlobalStoreService } from '@tt/data-access';
     selector: 'app-post-input',
     imports: [AvatarCircleComponent, NgIf, SvgIconComponent, FormsModule],
     templateUrl: './post-input.component.html',
-    styleUrl: './post-input.component.scss'
+    styleUrl: './post-input.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostInputComponent {
   r2 = inject(Renderer2);

@@ -1,9 +1,10 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
   inject,
-  Renderer2,
+  Renderer2
 } from '@angular/core';
 import { firstValueFrom, fromEvent } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -20,6 +21,7 @@ import { PostComponent } from '../post/post.component';
   imports: [PostInputComponent, PostComponent, AsyncPipe], // Добавляем импорты
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostFeedComponent {
   store = inject(Store);

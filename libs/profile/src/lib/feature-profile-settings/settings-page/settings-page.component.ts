@@ -1,4 +1,4 @@
-import { Component, effect, inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {ProfileService} from '@tt/profile';
 import { firstValueFrom } from 'rxjs';
@@ -8,7 +8,8 @@ import {AvatarUploadComponent, ProfileHeaderComponent} from '../../ui';
     selector: 'app-settings-page',
     imports: [ProfileHeaderComponent, ReactiveFormsModule, AvatarUploadComponent],
     templateUrl: './settings-page.component.html',
-    styleUrl: './settings-page.component.scss'
+    styleUrl: './settings-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsPageComponent {
   fb = inject(FormBuilder);

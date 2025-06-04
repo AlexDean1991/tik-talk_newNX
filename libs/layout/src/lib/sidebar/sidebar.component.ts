@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, JsonPipe, NgForOf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {ProfileService} from '@tt/profile';
@@ -20,7 +20,8 @@ import { ChatsService } from '@tt/chats';
         RouterLinkActive,
     ],
     templateUrl: './sidebar.component.html',
-    styleUrl: './sidebar.component.scss'
+    styleUrl: './sidebar.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent {
   profileService = inject(ProfileService);
