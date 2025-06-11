@@ -12,6 +12,7 @@ import {
   providedIn: 'root',
 })
 export class PostService {
+  id = Math.random() *1000;
   #http = inject(HttpClient);
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
 

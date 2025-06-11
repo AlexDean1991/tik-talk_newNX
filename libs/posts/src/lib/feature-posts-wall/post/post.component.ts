@@ -16,12 +16,19 @@ import {CommentComponent, PostInputComponent} from '../../ui';
     ],
     templateUrl: './post.component.html',
     styleUrl: './post.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+      PostService
+    ]
 })
 export class PostComponent implements OnInit {
   post = input<Post>();
   comments = signal<PostComment[]>([]);
   postService = inject(PostService);
+
+  constructor() {
+    console.log(this.postService.id);
+  }
 
   async ngOnInit() {
     this.comments.set(this.post()!.comments);

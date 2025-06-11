@@ -13,15 +13,16 @@ import { selectAllPosts, selectPostsLoading } from '../../data/store/selectors';
 import { AsyncPipe } from '@angular/common';
 import { PostInputComponent } from '../../ui/post-input/post-input.component';
 import { PostComponent } from '../post/post.component';
+import { TestDirective } from './test.directive';
 
 
 @Component({
   selector: 'app-post-feed',
   standalone: true, // Добавляем если используем standalone компоненты
-  imports: [PostInputComponent, PostComponent, AsyncPipe], // Добавляем импорты
+  imports: [PostInputComponent, PostComponent, AsyncPipe, TestDirective], // Добавляем импорты
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostFeedComponent {
   store = inject(Store);
