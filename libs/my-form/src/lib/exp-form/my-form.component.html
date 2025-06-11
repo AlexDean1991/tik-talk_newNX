@@ -1,0 +1,132 @@
+<form
+  [formGroup]="form"
+  class="my-form"
+  (ngSubmit)="onSubmit($event)"
+>
+
+  <h4 class="h4 mb16">Заполните данные, чтобы вызвать мастера</h4>
+  <label class="tt-control-label mb16">Выберите город
+
+    <select class="tt-input" formControlName="type">
+      <option [value]="RecieverType.Bugulma">Бугульма</option>
+      <option [value]="RecieverType.Almet">Альметьевск</option>
+      <option [value]="RecieverType.Leninogorsk">Лениногорск</option>
+      <option [value]="RecieverType.Bavly">Бавлы</option>
+    </select>
+  </label>
+
+  <label class="tt-control-label mb16">
+    Имя
+    <input
+      formControlName="name"
+      class="tt-input"
+      type="text"
+      placeholder="Введите имя"
+    />
+    <!--    <small class="txt-error">Это поле нужно заполнить</small>-->
+  </label>
+
+
+  <!--  @if (form.controls.name.touched && form.controls.name.hasError('required')) {-->
+  <!--  <small class="txt-error">Это поле нужно заполнить</small>-->
+  <!--  }-->
+
+  @if (form.controls.name.touched && form.controls.name.hasError('nameValid')) {
+    <small>{{ form.controls.name.getError('nameValid')?.message }}</small>
+  }
+
+  @if (form.controls.name.touched && form.controls.name.hasError('startsWith')) {
+    <small>{{ form.controls.name.getError('startsWith')?.message }}</small>
+  }
+
+
+  <label class="tt-control-label mb16">
+    Фамилия
+    <input
+      formControlName="lastName"
+      class="tt-input"
+      type="text"
+      placeholder="Введите фамилию"
+    />
+  </label>
+
+  <div style="display: flex; justify-content: space-between">
+    <h4 class="h6 mb16">Время для приезда мастера</h4>
+  </div>
+  <div class="two-columns" formGroupName="dateRange">
+    <label class="tt-control-label mb16">
+      От
+      <input
+        formControlName="from"
+        class="tt-input"
+        type="date"
+      />
+    </label>
+    <label class="tt-control-label mb16">
+      До
+      <input
+        formControlName="to"
+        class="tt-input"
+        type="date"
+      />
+    </label>
+  </div>
+
+  @if (form.controls.dateRange.touched && form.controls.dateRange.hasError('dateRange')) {
+    <small>{{ form.controls.dateRange.getError('dateRange')?.message }}</small>
+  }
+
+  <div>
+    <div style="display: flex; justify-content: space-between">
+      <h4 class="h6 mb16">Адрес</h4>
+    </div>
+
+    @for (group of form.controls.addresses.controls; track group; let i = $index) {
+      <div class="form-grid" [formGroup]="group">
+        <label class="tt-control-label">
+          Город
+          <input
+            formControlName="city"
+            class="tt-input"
+            type="text"
+            placeholder="Город"
+          />
+        </label>
+
+        <label class="tt-control-label">
+          Улица
+          <input
+            formControlName="street"
+            class="tt-input"
+            type="text"
+            placeholder="Улица"
+          />
+        </label>
+
+        <label class="tt-control-label">
+          Дом
+          <input
+            formControlName="building"
+            class="tt-input"
+            type="text"
+            placeholder="Дом"
+          />
+        </label>
+
+        <label class="tt-control-label">
+          Квартира
+          <input
+            formControlName="appartment"
+            class="tt-input"
+            type="text"
+            placeholder="Квартира"
+          />
+        </label>
+
+      </div>
+    }
+
+  </div>
+
+  <button class="btn btn-shadow mt20" type="submit">Подтвердить</button>
+</form>

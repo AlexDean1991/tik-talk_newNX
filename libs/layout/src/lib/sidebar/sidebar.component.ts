@@ -50,6 +50,11 @@ export class SidebarComponent {
       icon: 'search',
       link: 'search',
     },
+    {
+      label: 'Моя форма',
+      icon: '',
+      link: 'exp-form',
+    },
   ];
 
   ngOnInit() {

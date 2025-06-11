@@ -1,0 +1,45 @@
+.my-form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 600px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.txt-error {
+  display: none;
+}
+
+.tt-input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
+.tt-input.ng-invalid.ng-touched + .txt-error {
+  display: block;
+}
+
+.ng-submitted {
+  border: 10px solid aquamarine;
+}
+
+.two-columns {
+  display: grid;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.tt-input::-webkit-calendar-picker-indicator {
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.tt-input.ng-pending {
+  border: 2px dashed var(--primary-color);
+}

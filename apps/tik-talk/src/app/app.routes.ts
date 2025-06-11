@@ -11,6 +11,7 @@ import {
 } from '@tt/profile';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { MyFormComponent } from '@tt/my-form';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
       { path: 'profile/:id', component: ProfilePageComponent },
+      { path: 'exp-form', component: MyFormComponent },
       { path: 'settings', component: SettingsPageComponent },
       {
         path: 'search',

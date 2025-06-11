@@ -27,7 +27,8 @@
       "@tt/layout": ["libs/layout/src/index.ts"],
       "@tt/posts": ["libs/posts/src/index.ts"],
       "@tt/profile": ["libs/profile/src/index.ts"],
-      "@tt/shared": ["libs/shared/src/index.ts"]
+      "@tt/shared": ["libs/shared/src/index.ts"],
+      "@tt/my-form": ["libs/my-form/src/index.ts"]
     },
     "baseUrl": ".",
     "rootDir": "."
