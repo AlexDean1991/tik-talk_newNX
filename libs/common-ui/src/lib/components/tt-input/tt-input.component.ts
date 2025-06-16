@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,6 +17,7 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModu
   ],
 })
 export class TtInputComponent implements ControlValueAccessor {
+  constructor(private cdr: ChangeDetectorRef) {}
   type = input<'text' | 'password'>('text');
   placeholder = input<string>();
 
@@ -26,7 +27,8 @@ export class TtInputComponent implements ControlValueAccessor {
   value: string | null = null
 
   writeValue(val: string | null) {
-    console.log(val);
+    this.value = val;
+    this.cdr.detectChanges();
   }
 
   registerOnChange(fn: any) {
