@@ -89,6 +89,8 @@ export class AddressInputComponent implements ControlValueAccessor {
       street: suggest.data.street,
       building: suggest.data.house,
     })
+    this.onChange(suggest.data.city);
+    this.onTouched();
   }
 
 
