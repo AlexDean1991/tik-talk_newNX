@@ -64,6 +64,9 @@
         }
       },
       "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "proxy-conf.json"
+      },
       "continuous": true
     },
     "extract-i18n": {

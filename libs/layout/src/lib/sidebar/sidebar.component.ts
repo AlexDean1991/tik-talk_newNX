@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, JsonPipe, NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {ProfileService} from '@tt/profile';
@@ -23,7 +23,7 @@ import { ChatsService } from '@tt/chats';
     styleUrl: './sidebar.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   profileService = inject(ProfileService);
   subcribers$ = this.profileService.getSubscribersShortList();
   unreadCount$: Observable<number>
@@ -56,6 +56,7 @@ export class SidebarComponent {
       link: 'exp-form',
     },
   ];
+
 
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());

@@ -1,4 +1,4 @@
-import { ChatWsMessage } from './chat-ws-message.interface';
+  import { ChatWsMessage } from './chat-ws-message.interface';
 import { Observable } from 'rxjs';
 
 export interface ChatConnectionWsParams {

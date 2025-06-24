@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { catchError, tap, throwError } from 'rxjs';
+import { catchError, map, tap, throwError } from 'rxjs';
 import { TokenResponse } from '../interfaces/auth.interface';
 
 @Injectable({
@@ -22,7 +22,6 @@ export class AuthService {
       this.token = this.cookieService.get('token');
       this.refreshToken = this.cookieService.get('refreshToken');
     }
-
     return !!this.token;
   }
 
@@ -44,6 +43,7 @@ export class AuthService {
       })
       .pipe(
         tap((val) => this.saveTokens(val)),
+        map((val) => val.access_token),
         catchError((err) => {
           this.logout();
           return throwError(err);

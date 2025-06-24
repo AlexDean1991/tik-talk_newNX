@@ -10,9 +10,7 @@ export class ChatWsNativeService implements ChatWsService {
     this.#socket = new WebSocket(params.url, [params.token]);
 
     this.#socket.onmessage = (event: MessageEvent) => {
-
       params.handleMessage(JSON.parse(event.data));
-
     }
 
     this.#socket.onclose = () => {
@@ -22,20 +20,16 @@ export class ChatWsNativeService implements ChatWsService {
   }
 
   sendMessage(text: string, chatId: number) {
-
     this.#socket?.send(
       JSON.stringify(
         {
           text,
           chat_id: chatId
-        }
-      )
+        })
     )
   }
 
   disconnect() {
-
     this.#socket?.close()
-
   }
 }
